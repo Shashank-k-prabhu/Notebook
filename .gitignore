@@ -1,5 +1,8 @@
 
-/notebook-backend/node_modules
-notebook-backend/.env
-notebook-backend/.env
+/server/node_modules
+server/.env
+server/.env
+/client/node_modules
+client/node_modules
+client/.env
 .env
