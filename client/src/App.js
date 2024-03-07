@@ -4,12 +4,14 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Navigate from "./components/Navbar";
 import NoteState from "./contexts/notes/notesState";
+import Alert from "./components/Alert";
 
 function App() {
   return (
     <div className="App">
       <NoteState>
         <Navigate />
+        <Alert message="This is an alert" />
         <div className="container">
           <Routes>
             <Route path="/">
