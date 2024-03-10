@@ -9,7 +9,7 @@ import React from "react";
 function Navigate() {
   let location = useLocation();
   React.useEffect(() => {
-    console.log("pageview", location.pathname);
+    // console.log("pageview", location.pathname);
   }, [location]);
   return (
     <>
