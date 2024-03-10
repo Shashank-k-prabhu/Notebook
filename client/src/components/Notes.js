@@ -7,7 +7,10 @@ import NoteItem from "./NoteItem";
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes } = context;
-
+  const updateNotes = () => {
+    console.log("Updating notes");
+    getNotes(); // Fetch updated notes
+  };
   useEffect(() => {
     getNotes();
     console.log(notes);
@@ -22,11 +25,21 @@ const Notes = () => {
       </div>
       <div className="container my-3 mx-5">
         <h2>Your Notes</h2>
+        <div className="container mx-2 font-bold">
+          {notes.length === 0 && "No notes to display"}
+        </div>
         <div className="row my-3">
           {Array.isArray(notes) &&
             notes.map((note) => {
-              return <NoteItem note={note} key={note._id} />;
+              return (
+                <NoteItem
+                  note={note}
+                  key={note._id}
+                  updateNotes={updateNotes}
+                />
+              );
             })}
+          {console.log("Rendering Notes")}
         </div>
       </div>
     </>

@@ -13,7 +13,7 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         authtoken:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjUxZDdlNzA0ODYzNjA4MWE3MjFkNmVkIn0sImlhdCI6MTY5NjUwNTYyOX0.HCdOxFOTw9xTfBpJNUZSngNosWV-c4Zm3D53qqzt004",
-      }
+      },
     });
     const data = await response.json();
     // console.log(data);
@@ -31,7 +31,7 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
-    console.log(response.json())
+    console.log(response.json());
     const note = {
       _id: "65e8962940bd417cda56fe70",
       user: "651d7e7048636081a721d6ed",
@@ -64,7 +64,7 @@ const NoteState = (props) => {
     setNotes(newNotes);
   };
   //Edit Note
-  const updateNote = async (id, title, description, tag) => {
+  const editNote = async (id, title, description, tag) => {
     //Api call
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
@@ -80,21 +80,24 @@ const NoteState = (props) => {
     console.log(json);
 
     //Todo:api callw
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+    let newNotes = JSON.parse(JSON.stringify(notes));
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
       }
+      break;
     }
+    setNotes(newNotes);
   };
 
   const [notes, setNotes] = useState(notesInitial);
 
   return (
     <noteContext.Provider
-      value={{ notes, setNotes, addNote, updateNote, deleteNote, getNotes }}
+      value={{ notes, setNotes, addNote, editNote, deleteNote, getNotes }}
     >
       {props.children}
     </noteContext.Provider>

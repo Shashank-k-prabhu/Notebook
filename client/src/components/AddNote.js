@@ -1,11 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import noteContext from "../contexts/notes/notesContext";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 function AddNote() {
   const context = useContext(noteContext);
   const { addNote } = context;
+  const formRef = useRef(null);
 
   const [note, setNote] = useState({
     title: "",
@@ -16,12 +17,13 @@ function AddNote() {
     e.preventDefault();
     console.log("Adding note", note);
     addNote(note.title, note.description, note.tag);
+    formRef.current.reset();
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   return (
-    <Form className="my-3">
+    <Form className="my-3" ref={formRef}>
       <Form.Group className="mb-3 w-75">
         <Form.Label className="">Title</Form.Label>
         <Form.Control
