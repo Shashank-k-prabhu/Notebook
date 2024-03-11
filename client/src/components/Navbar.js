@@ -42,13 +42,18 @@ function Navigate() {
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
+            <Nav>
+              <Nav.Link>
+                <Button variant="primary" as={NavLink} to="/login">
+                  Login
+                </Button>
+              </Nav.Link>
+              <Nav.Link>
+                <Button variant="primary" as={NavLink} to="/register">
+                  Register
+                </Button>
+              </Nav.Link>
+            </Nav>
           </Form>
         </Container>
       </Navbar>
