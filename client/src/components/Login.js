@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login(props) {
   let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +21,11 @@ function Login() {
     const json = await response.json();
     if (json.success) {
       // Save the auth token and redirect
-      console.log("Login Successful");
       localStorage.setItem("token", json.authtoken);
       navigate("/home");
+      props.showAlert("Logged in successfully", "success");
     } else {
-      alert("Invalid Credentials");
+      props.showAlert("Invalid Credentials", "danger");
     }
     e.target.email.value = "";
     e.target.password.value = "";

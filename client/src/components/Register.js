@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-function Register() {
+function Register(props) {
   let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +26,11 @@ function Register() {
       const json = await response.json();
       if (json.success) {
         // Save the auth token and redirect
-        console.log("Register Successful");
         localStorage.setItem("token", json.authtoken);
         navigate("/login");
+        props.showAlert("Account created successfully", "success");
       } else {
-        alert("Invalid Registeration");
+        props.showAlert("Invalid Credentials", "danger");
       }
     }
   };

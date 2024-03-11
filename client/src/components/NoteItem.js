@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const NoteItem = (props) => {
-  const { note, updateNotes } = props;
+  const { note, updateNotes,showAlert } = props;
   const context = useContext(noteContext);
   const { deleteNote, editNote } = context;
 
@@ -31,6 +31,7 @@ const NoteItem = (props) => {
     );
    
     updateNotes();
+    showAlert("Note updated successfully", "success");
     handleCloseModal(); // Close modal after updating note
   };
 
@@ -52,6 +53,7 @@ const NoteItem = (props) => {
               className="fa-solid fa-trash mx-2"
               onClick={() => {
                 deleteNote(note._id);
+                props.showAlert("Note deleted successfully", "success");
               }}
             ></i>
             <i

@@ -3,10 +3,10 @@ import Form from "react-bootstrap/Form";
 import noteContext from "../contexts/notes/notesContext";
 import { useContext, useState } from "react";
 
-function AddNote() {
+function AddNote(props) {
   const context = useContext(noteContext);
   const { addNote } = context;
- 
+  const { showAlert } = props;
 
   const [note, setNote] = useState({
     title: "",
@@ -17,7 +17,7 @@ function AddNote() {
     e.preventDefault();
 
     addNote(note.title, note.description, note.tag);
-
+    showAlert("Note added successfully", "success");
     setNote({
       title: "",
       description: "",

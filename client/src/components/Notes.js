@@ -4,9 +4,10 @@ import AddNote from "./AddNote";
 import noteContext from "../contexts/notes/notesContext";
 import NoteItem from "./NoteItem";
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes } = context;
+  const { showAlert } = props;
   const updateNotes = () => {
    
     getNotes(); // Fetch updated notes
@@ -21,7 +22,7 @@ const Notes = () => {
     <>
       <div className="container my-4 mx-5">
         <h2>Add a note</h2>
-        <AddNote />
+        <AddNote showAlert={showAlert} />
       </div>
       <div className="container my-3 mx-5">
         <h2>Your Notes</h2>
@@ -36,6 +37,7 @@ const Notes = () => {
                   note={note}
                   key={note._id}
                   updateNotes={updateNotes}
+                  showAlert={showAlert}
                 />
               );
             })}
