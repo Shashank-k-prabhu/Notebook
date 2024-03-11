@@ -32,36 +32,39 @@ function Login(props) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter email"
-          required
-        />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+    <div className="mt-3">
+      <h2>Login to continue to Notepad</h2>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter email"
+            required
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
 
-      <Form.Group className="mb-3">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          name="password"
-          id="password"
-          minLength={5}
-          required
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            id="password"
+            minLength={5}
+            required
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }
 

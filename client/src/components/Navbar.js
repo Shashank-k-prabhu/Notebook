@@ -3,14 +3,20 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 
-function Navigate() {
+function Navigate(props) {
   let location = useLocation();
+  let navigate = useNavigate();
   React.useEffect(() => {
     // console.log("pageview", location.pathname);
   }, [location]);
+  const Logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+    
+  };
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -42,18 +48,24 @@ function Navigate() {
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Nav>
-              <Nav.Link>
-                <Button variant="primary" as={NavLink} to="/login">
-                  Login
-                </Button>
-              </Nav.Link>
-              <Nav.Link>
-                <Button variant="primary" as={NavLink} to="/register">
-                  Register
-                </Button>
-              </Nav.Link>
-            </Nav>
+            {!localStorage.getItem("token") ? (
+              <Nav>
+                <Nav.Link>
+                  <Button variant="primary" as={NavLink} to="/login">
+                    Login
+                  </Button>
+                </Nav.Link>
+                <Nav.Link>
+                  <Button variant="primary" as={NavLink} to="/register">
+                    Register
+                  </Button>
+                </Nav.Link>
+              </Nav>
+            ) : (
+              <Button variant="primary" onClick={Logout}>
+                Logout
+              </Button>
+            )}
           </Form>
         </Container>
       </Navbar>

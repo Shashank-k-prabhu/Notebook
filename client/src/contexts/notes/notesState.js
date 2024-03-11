@@ -12,7 +12,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         authtoken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjUxZDdlNzA0ODYzNjA4MWE3MjFkNmVkIn0sImlhdCI6MTY5NjUwNTYyOX0.HCdOxFOTw9xTfBpJNUZSngNosWV-c4Zm3D53qqzt004",
+          localStorage.getItem('token'),
       },
     });
     const data = await response.json();
@@ -27,7 +27,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         authtoken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjUxZDdlNzA0ODYzNjA4MWE3MjFkNmVkIn0sImlhdCI6MTY5NjUwNTYyOX0.HCdOxFOTw9xTfBpJNUZSngNosWV-c4Zm3D53qqzt004",
+          localStorage.getItem('token'),
       },
       body: JSON.stringify({ title, description, tag }),
     });
@@ -38,15 +38,15 @@ const NoteState = (props) => {
   //Delete Note
   const deleteNote = async (id) => {
     //Todo:api call
-    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+     await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         authtoken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjUxZDdlNzA0ODYzNjA4MWE3MjFkNmVkIn0sImlhdCI6MTY5NjUwNTYyOX0.HCdOxFOTw9xTfBpJNUZSngNosWV-c4Zm3D53qqzt004",
+          localStorage.getItem('token'),
       },
     });
-    const json = response.json();
+    // const json = response.json();
 
     //Client side
     const newNotes = notes.filter((note) => {
@@ -57,17 +57,17 @@ const NoteState = (props) => {
   //Edit Note
   const editNote = async (id, title, description, tag) => {
     //Api call
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+     await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         authtoken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjUxZDdlNzA0ODYzNjA4MWE3MjFkNmVkIn0sImlhdCI6MTY5NjUwNTYyOX0.HCdOxFOTw9xTfBpJNUZSngNosWV-c4Zm3D53qqzt004",
+          localStorage.getItem('token'),
       },
       body: JSON.stringify({ title, description, tag }),
     });
 
-    const json = response.json();
+    // const json = response.json();
     
 
     //Todo:api callw

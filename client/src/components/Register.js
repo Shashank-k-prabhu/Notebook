@@ -35,6 +35,8 @@ function Register(props) {
     }
   };
   return (
+    <div className="mt-3">
+      <h2>Register to continue to Notepad</h2>
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>Name</Form.Label>
@@ -86,6 +88,7 @@ function Register(props) {
         Submit
       </Button>
     </Form>
+    </div>
   );
 }
 

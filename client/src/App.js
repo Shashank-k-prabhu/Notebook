@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <NoteState>
-        <Navigate />
+        <Navigate alert={alert}/>
         <Alerts alert={alert} />
         <div className="container">
           <Routes>
