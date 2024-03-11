@@ -8,12 +8,12 @@ const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes } = context;
   const updateNotes = () => {
-    console.log("Updating notes");
+   
     getNotes(); // Fetch updated notes
   };
   useEffect(() => {
     getNotes();
-    console.log(notes);
+  
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,7 +39,7 @@ const Notes = () => {
                 />
               );
             })}
-          {console.log("Rendering Notes")}
+        
         </div>
       </div>
     </>

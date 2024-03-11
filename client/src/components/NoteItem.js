@@ -29,7 +29,7 @@ const NoteItem = (props) => {
       updatedNote.description,
       updatedNote.tag
     );
-    console.log("Updated note:", updatedNote);
+   
     updateNotes();
     handleCloseModal(); // Close modal after updating note
   };
@@ -79,6 +79,8 @@ const NoteItem = (props) => {
                 name="title"
                 value={updatedNote.title}
                 onChange={handleInputChange}
+                minLength={3}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="updateNoteDescription">
@@ -90,6 +92,8 @@ const NoteItem = (props) => {
                 name="description"
                 value={updatedNote.description}
                 onChange={handleInputChange}
+                minLength={5}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="updateNoteDescription">
