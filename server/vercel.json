@@ -2,18 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "./index.js",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    {
-      "src": "/api/auth/(.*)",
-      "dest": "./routes/auth.js"
-    },
-    {
-      "src": "/api/notes/(.*)",
-      "dest": "./routes/notes.js"
-    }
+    { "handle": "filesystem" },
+    { "src": "/api/auth/(.*)", "dest": "./routes/auth.js" },
+    { "src": "/api/notes/(.*)", "dest": "./routes/auth.js" },
+    { "src": "/(.*)", "dest": "./index.js" }
   ]
 }
